@@ -1,0 +1,31 @@
+body {
+  color:#000000;
+  background-color: #EEEEEE;
+  font-family:Helvetica,Arial,sans-serif;
+  font-size:small;
+  margin: auto;
+  padding: auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.item-group {
+    margin: 4px;
+}
+
+.item {
+  padding: 4px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #FFFFFF;
+}
+
+.item:hover {
+  background-color: #BBBBBB;
+}
+
+.error {
+  color: #FF0000;
+}

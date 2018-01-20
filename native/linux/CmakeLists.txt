@@ -1,0 +1,41 @@
+cmake_minimum_required(VERSION 3.1)
+project(MemoryObserver)
+
+#Unfortunately Mono is not supported yet...
+# enable_language(CSharp)
+
+#check install option for single-user or all-users
+if(SINGLEUSER)
+    set(MANIFESTINSTALLDIR ~/.mozilla/native-messaging-hosts)
+else()
+    set(MANIFESTINSTALLDIR /usr/lib/mozilla/native-messaging-hosts)
+endif()
+
+set(INSTALLDIR ${CMAKE_INSTALL_PREFIX}/bin)
+
+#build target - execute
+set(EXENAME memoryobserver.exe)
+set(EXEPATH ${PROJECT_BINARY_DIR}/${EXENAME})
+set(CS_COMPILER mcs)
+set(BASEDIR ${CMAKE_SOURCE_DIR}/..)
+set(SOURCES
+    ${BASEDIR}/src/memoryobserver.cs
+    ${BASEDIR}/windows/Properties/AssemblyInfo.cs
+)
+add_custom_target(output_exec ALL
+    COMMAND ${CS_COMPILER} /debug- /optimize+ /out:${EXENAME} ${SOURCES}
+    COMMENT "Building: ${EXENAME}."
+)
+
+#build target - manifest
+set(MANIFESTNAME chromia.ext.memoryobserver.json)
+set(MANIFESTDIR ${CMAKE_SOURCE_DIR})
+set(MANIFESTPATH ${PROJECT_BINARY_DIR}/${MANIFESTNAME})
+add_custom_target(output_manifest ALL
+    COMMAND sed -e \"s|_REPLACE_THIS_|${INSTALLDIR}|\" ${MANIFESTDIR}/manifest.firefox > ${MANIFESTPATH}
+    COMMENT "Generating manifest: ${MANIFESTNAME}."
+)
+
+#install target
+install(PROGRAMS ${EXEPATH} DESTINATION ${INSTALLDIR})
+install(FILES ${MANIFESTPATH} DESTINATION ${MANIFESTINSTALLDIR})

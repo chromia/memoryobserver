@@ -1,0 +1,38 @@
+{
+
+  "manifest_version": 2,
+  "name": "Memory Observer",
+  "version": "1.0",
+
+  "description": "Observe consumption amount of RAM.",
+
+  "applications": {
+    "gecko": {
+      "id": "{EAD8A720-FBB2-11E7-A8F9-FAA73054759D}",
+      "strict_min_version": "42.0"
+    }
+  },
+
+  "icons": {
+    "64": "icons/64.png"
+  },
+
+  "permissions": [
+    "nativeMessaging", "storage"
+  ],
+
+  "browser_action": {
+    "default_icon": "icons/button.png",
+    "default_title": "Memory Observer",
+    "default_popup": "popup/popup.html"
+  },
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "options_ui": {
+    "page": "options/options.html"
+  }
+
+}

@@ -1,0 +1,7 @@
+{
+  "name": "chromia.ext.memoryobserver",
+  "description": "Collector of browser's memory consumption.",
+  "path": "_REPLACE_THIS_/memoryobserver.exe",
+  "type": "stdio",
+  "allowed_extensions": [ "{EAD8A720-FBB2-11E7-A8F9-FAA73054759D}" ]
+}
