@@ -2,14 +2,20 @@
 
   "manifest_version": 2,
   "name": "Memory Observer",
+  "author": "chromia",
   "version": "1.0",
 
   "description": "Observe consumption amount of RAM.",
 
+  "developer": {
+    "name": "chromia",
+    "url": "http://chromia.cocotte.jp/monooki/"
+  },
+
   "applications": {
     "gecko": {
       "id": "{EAD8A720-FBB2-11E7-A8F9-FAA73054759D}",
-      "strict_min_version": "42.0"
+      "strict_min_version": "52.0"
     }
   },
 
