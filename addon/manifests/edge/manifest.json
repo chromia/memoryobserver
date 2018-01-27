@@ -1,0 +1,28 @@
+{
+
+  "name": "MemoryObserver",
+  "author": "chromia",
+  "version": "1.0",
+
+  "icons": {
+    "64": "icons/64.png"
+  },
+
+  "permissions": [
+    "storage", "nativeMessaging"
+  ],
+
+  "browser_action": {
+    "default_icon": "icons/button.png",
+    "default_title": "Memory Observer",
+    "default_popup": "popup/popup.html"
+  },
+
+  "background": {
+    "scripts": ["background.js"],
+    "persistent" : true
+},
+
+  "options_page": "options/options.html"
+
+}
