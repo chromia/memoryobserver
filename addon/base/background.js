@@ -21,15 +21,26 @@ try{
     console.log(e);
 }
 
+//wrapper of storage.local.get
+function getlocalstorage(key, callback)
+{
+    //On Firefox&Chrome, storage.local.get requires 1 arg(key).
+    //But Edge requires 2 args(key, callback) because Edge doesn't support Promise model.
+    //ref: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/9420301/
+    const promise = browser.storage.local.get(key, callback); //Edge calls callback-func here( and returns undefined )
+    if(promise !== undefined){
+        promise.then(callback, onError); //Firefox&Chrome calls callback-func here
+    }
+}
+
 function settarget()
 {
     //get target process name from storage
-    const getopt = browser.storage.local.get("targetname");
-    getopt.then( (result) =>{
+    getlocalstorage("targetname", (result) =>{
         targetname = result.targetname || "firefox";
         //then, send it to native application
         port.postMessage("settarget," + targetname);
-    }, onError);
+    });
 }
 settarget(); //call it once on initializing phase
 
