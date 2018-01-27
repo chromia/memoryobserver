@@ -8,12 +8,18 @@ const interval = 5000; // [ms]
 
 
 //connect to native application
-const port = browser.runtime.connectNative("chromia.ext.memoryobserver");
-port.onDisconnect.addListener((p) => {
-    if (p.error) enable = false;
-    browser.browserAction.setBadgeText({text: "E"});
-    browser.browserAction.setBadgeBackgroundColor({color: "red"});
-});
+let port = null;
+try{
+    port = browser.runtime.connectNative("chromia.ext.memoryobserver");
+    port.onDisconnect.addListener((p) => {
+        enable = false;
+        browser.browserAction.setBadgeText({text: "E"});
+        //browser.browserAction.setBadgeBackgroundColor({color: "red"});
+        browser.browserAction.setBadgeBackgroundColor({color: "#FF0000"}); //Note: Edge doesn't accept color name, use color code
+    });
+}catch(e){
+    console.log(e);
+}
 
 function settarget()
 {
@@ -42,8 +48,9 @@ port.onMessage.addListener( (response) => {
         const mem_raw = parseInt(response.result);
         const mem = getmemtext(mem_raw);
         memoryuse = mem.toString();
-        browser.browserAction.setBadgeText({text: memoryuse});
-        browser.browserAction.setBadgeBackgroundColor({color: "green"});
+        browser.browserAction.setBadgeText({ text: memoryuse });
+        //browser.browserAction.setBadgeBackgroundColor({ color: "green" });
+        browser.browserAction.setBadgeBackgroundColor({color: "#008000"}); //Note: Edge doesn't accept color name, use color code
     }
 });
 
