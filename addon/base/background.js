@@ -21,6 +21,16 @@ try{
     console.log(e);
 }
 
+function convertResponse(response)
+{
+    //On Edge, type of response from Native App is 'string' ( not object )
+    if(typeof(response) == 'string'){
+        return JSON.parse(response);
+    }else{
+        return response;
+    }
+}
+
 //wrapper of storage.local.get
 function getlocalstorage(key, callback)
 {
@@ -55,6 +65,7 @@ setTimeout(update, firstinterval);
 
 //receiver from native application
 port.onMessage.addListener( (response) => {
+    response = convertResponse(response);
     if( response.command == 'memory' ){
         const mem_raw = parseInt(response.result);
         const mem = getmemtext(mem_raw);
