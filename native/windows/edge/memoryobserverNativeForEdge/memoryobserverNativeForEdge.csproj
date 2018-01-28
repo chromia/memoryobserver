@@ -107,42 +107,42 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <Content Include="..\..\..\..\project\memoryobserver\addon\manifests\edge\manifest.json">
+    <Content Include="..\..\..\..\addon\manifests\edge\manifest.json">
       <Link>Extension\manifest.json</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="memoryobserverNativeForEdge_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\..\..\project\memoryobserver\addon\base\background.js">
+    <Content Include="..\..\..\..\addon\base\background.js">
       <Link>Extension\background.js</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\..\project\memoryobserver\addon\base\icons\64.png">
+    <Content Include="..\..\..\..\addon\base\icons\64.png">
       <Link>Extension\icons\64.png</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\..\project\memoryobserver\addon\base\icons\button.png">
+    <Content Include="..\..\..\..\addon\base\icons\button.png">
       <Link>Extension\icons\button.png</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\..\project\memoryobserver\addon\base\options\options.html">
+    <Content Include="..\..\..\..\addon\base\options\options.html">
       <Link>Extension\options\options.html</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\..\project\memoryobserver\addon\base\options\options.js">
+    <Content Include="..\..\..\..\addon\base\options\options.js">
       <Link>Extension\options\options.js</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\..\project\memoryobserver\addon\base\popup\popup.css">
+    <Content Include="..\..\..\..\addon\base\popup\popup.css">
       <Link>Extension\popup\popup.css</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\..\project\memoryobserver\addon\base\popup\popup.html">
+    <Content Include="..\..\..\..\addon\base\popup\popup.html">
       <Link>Extension\popup\popup.html</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\..\project\memoryobserver\addon\base\popup\popup.js">
+    <Content Include="..\..\..\..\addon\base\popup\popup.js">
       <Link>Extension\popup\popup.js</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
