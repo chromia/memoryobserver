@@ -31,23 +31,42 @@ function convertResponse(response)
     }
 }
 
-//wrapper of storage.local.get
-function getlocalstorage(key, callback)
+//function call wrapping
+//On Firefox&Chrome, storage.local.get requires 1 arg(key).
+//But Edge requires 2 args(key, callback) because Edge doesn't support Promise model.
+//ref: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/9420301/
+function callwrapper(func, key, callback)
 {
-    //On Firefox&Chrome, storage.local.get requires 1 arg(key).
-    //But Edge requires 2 args(key, callback) because Edge doesn't support Promise model.
-    //ref: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/9420301/
-    const promise = browser.storage.local.get(key, callback); //Edge calls callback-func here( and returns undefined )
+    const promise = func(key, callback);
     if(promise !== undefined){
-        promise.then(callback, onError); //Firefox&Chrome calls callback-func here
+        promise.then(callback, onError);
     }
 }
+//wrapper of storage.local.get
+function getlocalstorage(key, callback) {  callwrapper(browser.storage.local.get, key, callback); }
+
+function getdefaulttarget()
+{
+    //Simple browser detection
+    //TODO: Find more clever way
+    const b = browser.runtime;
+    const c = chrome.runtime;
+    if( b && c ){
+        return "firefox"; //firefox.exe
+    }else if( c ){
+        return "chrome"; //chrome.exe
+    }else if( b ){
+        return "MicrosoftEdge|MicrosoftEdgeCP"; //edge executes
+    }else{
+        return "firefox"; //unknown...
+    }
+};
 
 function settarget()
 {
     //get target process name from storage
     getlocalstorage("targetname", (result) =>{
-        targetname = result.targetname || "firefox";
+        targetname = result.targetname || defaulttarget();
         //then, send it to native application
         port.postMessage("settarget," + targetname);
     });
@@ -91,6 +110,8 @@ browser.runtime.onMessage.addListener(function(message, sender, sendResponse) {
     }else if( message == "optionupdate" ){
         sendResponse("ok");
         settarget(); //update target process name
+    }else if( message == "getdefaulttarget"){
+        sendResponse(getdefaulttarget());
     }
     return true
 });

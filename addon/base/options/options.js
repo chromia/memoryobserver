@@ -2,23 +2,29 @@
 //target process name
 const targetid = "targetname";
 const target = document.getElementById(targetid);
-const defaulttarget = "firefox";
+
 
 function onError(error) {
     console.log(`Error: ${error}`);
 }
 
-//wrapper of storage.local.get
-function getlocalstorage(key, callback)
+
+//function call wrapping
+//On Firefox&Chrome, storage.local.get requires 1 arg(key).
+//But Edge requires 2 args(key, callback) because Edge doesn't support Promise model.
+//ref: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/9420301/
+function callwrapper(func, key, callback)
 {
-    //On Firefox&Chrome, storage.local.get requires 1 arg(key).
-    //But Edge requires 2 args(key, callback) because Edge doesn't support Promise model.
-    //ref: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/9420301/
-    const promise = browser.storage.local.get(key, callback); //Edge calls callback-func here( and returns undefined )
+    const promise = func(key, callback);
     if(promise !== undefined){
-        promise.then(callback, onError); //Firefox&Chrome calls callback-func here
+        promise.then(callback, onError);
     }
 }
+//wrapper of storage.local.get
+function getlocalstorage(key, callback) {  callwrapper(browser.storage.local.get, key, callback); }
+//wrapper of runtime.sendMessage
+function sendMessage(key, callback) { callwrapper(browser.runtime.sendMessage, key, callback); }
+
 
 target.addEventListener("input", event => {
     //save new value
@@ -30,10 +36,13 @@ target.addEventListener("input", event => {
 });
 
 function restoreOptions() {
-    function restoreValue(result) {
-        target.value = result.targetname || "firefox"; // read value or default
-    }
-    getlocalstorage(targetid, restoreValue);
+    //get settings from storage
+    getlocalstorage(targetid, (fromstorage) =>{
+        //get default value
+        sendMessage("getdefaulttarget", (defaulttarget) =>{
+            target.value = fromstorage.targetname || defaulttarget;
+        });
+    });
 }
 
 document.addEventListener("DOMContentLoaded", restoreOptions);
