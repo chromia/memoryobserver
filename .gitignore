@@ -294,3 +294,6 @@ build/
 pub_firefox/
 pub_chrome/
 pub_edge/
+
+# exe
+memoryobserverNativeForEdgeApp.exe
