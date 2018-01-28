@@ -66,7 +66,7 @@ function settarget()
 {
     //get target process name from storage
     getlocalstorage("targetname", (result) =>{
-        targetname = result.targetname || defaulttarget();
+        targetname = result.targetname || getdefaulttarget();
         //then, send it to native application
         port.postMessage("settarget," + targetname);
     });
