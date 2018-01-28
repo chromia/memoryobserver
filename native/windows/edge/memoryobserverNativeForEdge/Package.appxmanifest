@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" IgnorableNamespaces="uap uap3 mp rescap">
+  <Identity Name="d4edd204-4360-41f8-b377-dd020067f212" Publisher="CN=primary" Version="1.0.0.0" />
+  <mp:PhoneIdentity PhoneProductId="d4edd204-4360-41f8-b377-dd020067f212" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Properties>
+    <DisplayName>MemoryObserver</DisplayName>
+    <PublisherDisplayName>chromia</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.10586.0" MaxVersionTested="10.0.14393.0" />
+  </Dependencies>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="memoryobserverNativeForEdge.App">
+      <uap:VisualElements AppListEntry="none" DisplayName="MemoryObserver" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="memoryobserverNativeForEdge" BackgroundColor="transparent">
+      </uap:VisualElements>
+      <Extensions>
+        <uap:Extension Category="windows.appService">
+          <uap:AppService Name="chromia.ext.memoryobserver" />
+        </uap:Extension>
+        <uap3:Extension Category="windows.appExtension">
+          <uap3:AppExtension Name="com.microsoft.edge.extension" Id="EdgeExtension" PublicFolder="Extension" DisplayName="ms-resource:DisplayName">
+            <uap3:Properties>
+              <Capabilities>
+                <Capability Name="websiteContent" />
+                <Capability Name="websiteInfo" />
+                <Capability Name="browserStorage" />
+                <uap:Capability Name="documentsLibrary" />
+              </Capabilities>
+            </uap3:Properties>
+          </uap3:AppExtension>
+        </uap3:Extension>
+        <desktop:Extension Category="windows.fullTrustProcess" Executable="App\memoryobserverNativeForEdgeApp.exe" xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10" />
+        <uap:Extension Category="windows.fileTypeAssociation">
+          <uap:FileTypeAssociation Name="log">
+            <uap:EditFlags AlwaysUnsafe="true" />
+            <uap:SupportedFileTypes>
+              <uap:FileType>.txt</uap:FileType>
+            </uap:SupportedFileTypes>
+          </uap:FileTypeAssociation>
+        </uap:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <rescap:Capability Name="runFullTrust" />
+  </Capabilities>
+</Package>

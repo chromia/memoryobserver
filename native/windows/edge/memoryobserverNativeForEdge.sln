@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2020
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "memoryobserverNativeForEdge", "memoryobserverNativeForEdge\memoryobserverNativeForEdge.csproj", "{2926158A-AC6E-421D-9426-1545B5C814CC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A68A158B-ACA9-4F35-9191-ECCE521AC25E} = {A68A158B-ACA9-4F35-9191-ECCE521AC25E}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "memoryobserverNativeForEdgeApp", "memoryobserverNativeForEdgeApp\memoryobserverNativeForEdgeApp.csproj", "{A68A158B-ACA9-4F35-9191-ECCE521AC25E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2926158A-AC6E-421D-9426-1545B5C814CC}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{2926158A-AC6E-421D-9426-1545B5C814CC}.Debug|ARM.ActiveCfg = Debug|ARM
+		{2926158A-AC6E-421D-9426-1545B5C814CC}.Debug|ARM.Build.0 = Debug|ARM
+		{2926158A-AC6E-421D-9426-1545B5C814CC}.Debug|ARM.Deploy.0 = Debug|ARM
+		{2926158A-AC6E-421D-9426-1545B5C814CC}.Debug|x64.ActiveCfg = Debug|x64
+		{2926158A-AC6E-421D-9426-1545B5C814CC}.Debug|x64.Build.0 = Debug|x64
+		{2926158A-AC6E-421D-9426-1545B5C814CC}.Debug|x64.Deploy.0 = Debug|x64
+		{2926158A-AC6E-421D-9426-1545B5C814CC}.Debug|x86.ActiveCfg = Debug|x86
+		{2926158A-AC6E-421D-9426-1545B5C814CC}.Debug|x86.Build.0 = Debug|x86
+		{2926158A-AC6E-421D-9426-1545B5C814CC}.Debug|x86.Deploy.0 = Debug|x86
+		{2926158A-AC6E-421D-9426-1545B5C814CC}.Release|Any CPU.ActiveCfg = Release|x86
+		{2926158A-AC6E-421D-9426-1545B5C814CC}.Release|ARM.ActiveCfg = Release|ARM
+		{2926158A-AC6E-421D-9426-1545B5C814CC}.Release|ARM.Build.0 = Release|ARM
+		{2926158A-AC6E-421D-9426-1545B5C814CC}.Release|ARM.Deploy.0 = Release|ARM
+		{2926158A-AC6E-421D-9426-1545B5C814CC}.Release|x64.ActiveCfg = Release|x64
+		{2926158A-AC6E-421D-9426-1545B5C814CC}.Release|x64.Build.0 = Release|x64
+		{2926158A-AC6E-421D-9426-1545B5C814CC}.Release|x64.Deploy.0 = Release|x64
+		{2926158A-AC6E-421D-9426-1545B5C814CC}.Release|x86.ActiveCfg = Release|x86
+		{2926158A-AC6E-421D-9426-1545B5C814CC}.Release|x86.Build.0 = Release|x86
+		{2926158A-AC6E-421D-9426-1545B5C814CC}.Release|x86.Deploy.0 = Release|x86
+		{A68A158B-ACA9-4F35-9191-ECCE521AC25E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A68A158B-ACA9-4F35-9191-ECCE521AC25E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A68A158B-ACA9-4F35-9191-ECCE521AC25E}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{A68A158B-ACA9-4F35-9191-ECCE521AC25E}.Debug|ARM.Build.0 = Debug|Any CPU
+		{A68A158B-ACA9-4F35-9191-ECCE521AC25E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A68A158B-ACA9-4F35-9191-ECCE521AC25E}.Debug|x64.Build.0 = Debug|Any CPU
+		{A68A158B-ACA9-4F35-9191-ECCE521AC25E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A68A158B-ACA9-4F35-9191-ECCE521AC25E}.Debug|x86.Build.0 = Debug|Any CPU
+		{A68A158B-ACA9-4F35-9191-ECCE521AC25E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A68A158B-ACA9-4F35-9191-ECCE521AC25E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A68A158B-ACA9-4F35-9191-ECCE521AC25E}.Release|ARM.ActiveCfg = Release|Any CPU
+		{A68A158B-ACA9-4F35-9191-ECCE521AC25E}.Release|ARM.Build.0 = Release|Any CPU
+		{A68A158B-ACA9-4F35-9191-ECCE521AC25E}.Release|x64.ActiveCfg = Release|Any CPU
+		{A68A158B-ACA9-4F35-9191-ECCE521AC25E}.Release|x64.Build.0 = Release|Any CPU
+		{A68A158B-ACA9-4F35-9191-ECCE521AC25E}.Release|x86.ActiveCfg = Release|Any CPU
+		{A68A158B-ACA9-4F35-9191-ECCE521AC25E}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D9B833FF-9E69-499F-BF88-EF8420415A03}
+	EndGlobalSection
+EndGlobal
