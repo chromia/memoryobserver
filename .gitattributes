@@ -6,3 +6,6 @@
 *.config text eol=crlf
 *.settings text eol=crlf
 *.json   text
+*.xaml   text eol=crlf
+*.xml    text eol=crlf
+*.appxmanifest text eol=crlf
