@@ -13,7 +13,9 @@
   ],
 
   "browser_action": {
-    "default_icon": "icons/button.png",
+    "default_icon": {
+        "64": "icons/64.png"
+    },
     "default_title": "Memory Observer",
     "default_popup": "popup/popup.html"
   },
