@@ -108,6 +108,9 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="..\..\..\..\addon\base\icons\30.png">
+      <Link>Extension\icons\30.png</Link>
+    </Content>
     <Content Include="..\..\..\..\addon\manifests\edge\manifest.json">
       <Link>Extension\manifest.json</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
