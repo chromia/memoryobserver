@@ -62,6 +62,9 @@ namespace memoryobserver
                         //set processname of browser( chrome, firefox, edge, waterfox, palemoon... )
                         targetprocess = ci.commandargs[0];
                         response = MakeResponse(ci.command, ResultOk);
+                    }else if(ci.command == "shutdown")
+                    {
+                        exit_flag = true;
                     }
 
                     //Return command response to browser
@@ -113,6 +116,10 @@ namespace memoryobserver
             if (length > maxlength)
             {
                 throw new ApplicationException("invalid message length");
+            }else if( length == 0)
+            {
+                //browser process is already closed(Chrome doesn't kill me)
+                return "shutdown"; //kill myself...
             }
 
             var buffer = new char[length];
