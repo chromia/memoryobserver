@@ -4,23 +4,51 @@ project(MemoryObserver)
 #Unfortunately Mono is not supported yet...
 # enable_language(CSharp)
 
-#check install option for single-user or all-users
-if(SINGLEUSER)
-    set(MANIFESTINSTALLDIR ~/.mozilla/native-messaging-hosts)
-else()
-    set(MANIFESTINSTALLDIR /usr/lib/mozilla/native-messaging-hosts)
+#check install option
+if( NOT (FIREFOX OR CHROME) )
+    message(FATAL_ERROR, "Please set at least one target browser. use -DFIREFOX=1 or -DCHROME=1")
 endif()
 
+set(APPNAME chromia.ext.memoryobserver)
+set(DSTMANIFESTNAME ${APPNAME}.json)
+set(SRCDIR ${CMAKE_SOURCE_DIR})
+set(WORKDIR ${PROJECT_BINARY_DIR})
 set(INSTALLDIR ${CMAKE_INSTALL_PREFIX}/bin)
+
+if(SINGLEUSER)
+    message(STATUS "Configuration: For single user")
+    if(FIREFOX)
+        message(STATUS "Configuration: Target Firefox is enabled")
+        set(MANIFESTINSTALLDIR_FIREFOX ~/.mozilla/native-messaging-hosts)
+        set(SRCMANIFESTNAME_FIREFOX manifest.firefox)
+    endif()
+    if(CHROME)
+        message(STATUS "Configuration: Target Chrome is enabled")
+        set(MANIFESTINSTALLDIR_CHROME ~/.config/google-chrome/NativeMessagingHosts)
+        set(SRCMANIFESTNAME_CHROME manifest.chrome)
+    endif()
+else()
+    message(STATUS "Configuration: For all users")
+    if(FIREFOX)
+        message(STATUS "Configuration: Target Firefox is enabled")
+        set(MANIFESTINSTALLDIR_FIREFOX /usr/lib/mozilla/native-messaging-hosts)
+        set(SRCMANIFESTNAME_FIREFOX manifest.firefox)
+    endif()
+    if(CHROME)
+        message(STATUS "Configuration: Target Chrome is enabled")
+        set(MANIFESTINSTALLDIR_CHROME /etc/opt/chrome/native-messaging-hosts)
+        set(SRCMANIFESTNAME_CHROME manifest.chrome)
+    endif()
+endif()
 
 #build target - execute
 set(EXENAME memoryobserver.exe)
-set(EXEPATH ${PROJECT_BINARY_DIR}/${EXENAME})
+set(EXEPATH ${WORKDIR}/${EXENAME})
 set(CS_COMPILER mcs)
-set(BASEDIR ${CMAKE_SOURCE_DIR}/..)
+set(BASEDIR ${SRCDIR}/..)
 set(SOURCES
     ${BASEDIR}/src/memoryobserver.cs
-    ${BASEDIR}/windows/Properties/AssemblyInfo.cs
+    ${BASEDIR}/windows/other/Properties/AssemblyInfo.cs
 )
 add_custom_target(output_exec ALL
     COMMAND ${CS_COMPILER} /debug- /optimize+ /out:${EXENAME} ${SOURCES}
@@ -28,14 +56,22 @@ add_custom_target(output_exec ALL
 )
 
 #build target - manifest
-set(MANIFESTNAME chromia.ext.memoryobserver.json)
-set(MANIFESTDIR ${CMAKE_SOURCE_DIR})
-set(MANIFESTPATH ${PROJECT_BINARY_DIR}/${MANIFESTNAME})
-add_custom_target(output_manifest ALL
-    COMMAND sed -e \"s|_REPLACE_THIS_|${INSTALLDIR}|\" ${MANIFESTDIR}/manifest.firefox > ${MANIFESTPATH}
-    COMMENT "Generating manifest: ${MANIFESTNAME}."
-)
+if(FIREFOX)
+    add_custom_target(output_manifest_firefox ALL
+        COMMAND sed -e \"s|_REPLACE_THIS_|${INSTALLDIR}|\" ${SRCDIR}/${SRCMANIFESTNAME_FIREFOX} > ${WORKDIR}/${SRCMANIFESTNAME_FIREFOX}
+        COMMENT "Generating manifest: ${SRCMANIFESTNAME_FIREFOX}.")
+endif()
+if(CHROME)
+    add_custom_target(output_manifest_chrome ALL
+        COMMAND sed -e \"s|_REPLACE_THIS_|${INSTALLDIR}|\" ${SRCDIR}/${SRCMANIFESTNAME_CHROME} > ${WORKDIR}/${SRCMANIFESTNAME_CHROME}
+        COMMENT "Generating manifest: ${SRCMANIFESTNAME_CHROME}.")
+endif()
 
 #install target
 install(PROGRAMS ${EXEPATH} DESTINATION ${INSTALLDIR})
-install(FILES ${MANIFESTPATH} DESTINATION ${MANIFESTINSTALLDIR})
+if(FIREFOX)
+    install(FILES ${WORKDIR}/${SRCMANIFESTNAME_FIREFOX} DESTINATION ${MANIFESTINSTALLDIR_FIREFOX} RENAME ${DSTMANIFESTNAME})
+endif()
+if(CHROME)
+    install(FILES ${WORKDIR}/${SRCMANIFESTNAME_CHROME} DESTINATION ${MANIFESTINSTALLDIR_CHROME} RENAME ${DSTMANIFESTNAME})
+endif()
