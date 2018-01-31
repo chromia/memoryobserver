@@ -15,13 +15,19 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_7DCB74F1A55B44A0A400307C89BC4B3F"
+        "MsmKey" = "8:_4137E60FE73B4F178258C60A3FAAF721"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_A17E6BB394C34C93BD814FEF975D0080"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D62421F0FF024C979579BCFD2A5C4DD2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -126,12 +132,32 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7DCB74F1A55B44A0A400307C89BC4B3F"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4137E60FE73B4F178258C60A3FAAF721"
             {
-            "SourcePath" = "8:..\\manifest.json"
+            "SourcePath" = "8:..\\chrome\\manifest.json"
             "TargetName" = "8:manifest.json"
             "Tag" = "8:"
-            "Folder" = "8:_5CD292964094475FB02F1581E047B302"
+            "Folder" = "8:_DD86C06C9BC04F5D9494E31C7968F10E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D62421F0FF024C979579BCFD2A5C4DD2"
+            {
+            "SourcePath" = "8:..\\firefox\\manifest.json"
+            "TargetName" = "8:manifest.json"
+            "Tag" = "8:"
+            "Folder" = "8:_89139E00E28F4410A26648AD76E068F9"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -184,6 +210,28 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_89139E00E28F4410A26648AD76E068F9"
+                    {
+                    "Name" = "8:firefox"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_79C23FDE6BC64DCD965E90427EAF15DB"
+                        "Folders"
+                        {
+                        }
+                    }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_DD86C06C9BC04F5D9494E31C7968F10E"
+                    {
+                    "Name" = "8:chrome"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_8716D0DB92214D9F8E0E5EC287E14AF3"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
         }
@@ -203,7 +251,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MemoryObserver"
         "ProductCode" = "8:{B368FB62-2405-42DE-BCA0-5F1A9372FAC9}"
-        "PackageCode" = "8:{5D806E8C-C9CE-434F-8001-838620841225}"
+        "PackageCode" = "8:{9422A94C-F14E-4AC9-BDAD-A1D792CF2A39}"
         "UpgradeCode" = "8:{9EE07DE0-6B78-4C58-8F79-9629D922E640}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -280,8 +328,72 @@
                                                     "Condition" = "8:ALLUSERS<>NULL"
                                                     "Transitive" = "11:FALSE"
                                                     "ValueTypes" = "3:1"
-                                                    "Value" = "8:[TARGETDIR]manifest.json"
+                                                    "Value" = "8:[TARGETDIR]firefox\\manifest.json"
                                                     }
+                                                }
+                                            }
+                                        }
+                                        "Values"
+                                        {
+                                        }
+                                    }
+                                }
+                                "Values"
+                                {
+                                }
+                            }
+                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_BE082FA8790D4D6890F3366DFA7BD55A"
+                            {
+                            "Name" = "8:Google"
+                            "Condition" = "8:"
+                            "AlwaysCreate" = "11:FALSE"
+                            "DeleteAtUninstall" = "11:FALSE"
+                            "Transitive" = "11:FALSE"
+                                "Keys"
+                                {
+                                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_12E84CF1B7884DA5B5F6949E5C77AFB7"
+                                    {
+                                    "Name" = "8:Chrome"
+                                    "Condition" = "8:"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "DeleteAtUninstall" = "11:FALSE"
+                                    "Transitive" = "11:FALSE"
+                                        "Keys"
+                                        {
+                                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_6BA2AC9229A64736BF369A23C2B82829"
+                                            {
+                                            "Name" = "8:NativeMessagingHosts"
+                                            "Condition" = "8:"
+                                            "AlwaysCreate" = "11:FALSE"
+                                            "DeleteAtUninstall" = "11:FALSE"
+                                            "Transitive" = "11:FALSE"
+                                                "Keys"
+                                                {
+                                                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_332FB4894FBF432F9DF5FEDC60F61070"
+                                                    {
+                                                    "Name" = "8:chromia.ext.memoryobserver"
+                                                    "Condition" = "8:"
+                                                    "AlwaysCreate" = "11:FALSE"
+                                                    "DeleteAtUninstall" = "11:FALSE"
+                                                    "Transitive" = "11:FALSE"
+                                                        "Keys"
+                                                        {
+                                                        }
+                                                        "Values"
+                                                        {
+                                                            "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_5636504F35F043CFAD6888E6F6106C87"
+                                                            {
+                                                            "Name" = "8:"
+                                                            "Condition" = "8:ALLUSERS<>NULL"
+                                                            "Transitive" = "11:FALSE"
+                                                            "ValueTypes" = "3:1"
+                                                            "Value" = "8:[TARGETDIR]chrome\\manifest.json"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                "Values"
+                                                {
                                                 }
                                             }
                                         }
@@ -314,6 +426,70 @@
                     "Transitive" = "11:FALSE"
                         "Keys"
                         {
+                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_4D09C261ED0648668F2C80384621E238"
+                            {
+                            "Name" = "8:Google"
+                            "Condition" = "8:"
+                            "AlwaysCreate" = "11:FALSE"
+                            "DeleteAtUninstall" = "11:FALSE"
+                            "Transitive" = "11:FALSE"
+                                "Keys"
+                                {
+                                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_E7C9AAE095C147099748A08C84D712F1"
+                                    {
+                                    "Name" = "8:Chrome"
+                                    "Condition" = "8:"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "DeleteAtUninstall" = "11:FALSE"
+                                    "Transitive" = "11:FALSE"
+                                        "Keys"
+                                        {
+                                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_6A6745E4BD5A45DEAA8E1671A6650A0C"
+                                            {
+                                            "Name" = "8:NativeMessagingHosts"
+                                            "Condition" = "8:"
+                                            "AlwaysCreate" = "11:FALSE"
+                                            "DeleteAtUninstall" = "11:FALSE"
+                                            "Transitive" = "11:FALSE"
+                                                "Keys"
+                                                {
+                                                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_1045E606FF294787B1C1687B36A93403"
+                                                    {
+                                                    "Name" = "8:chromia.ext.memoryobserver"
+                                                    "Condition" = "8:"
+                                                    "AlwaysCreate" = "11:FALSE"
+                                                    "DeleteAtUninstall" = "11:FALSE"
+                                                    "Transitive" = "11:FALSE"
+                                                        "Keys"
+                                                        {
+                                                        }
+                                                        "Values"
+                                                        {
+                                                            "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_D2A3BDD807E240F0A448B8CFDD1E78AC"
+                                                            {
+                                                            "Name" = "8:"
+                                                            "Condition" = "8:ALLUSERS=NULL"
+                                                            "Transitive" = "11:FALSE"
+                                                            "ValueTypes" = "3:1"
+                                                            "Value" = "8:[TARGETDIR]chrome\\manifest.json"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                "Values"
+                                                {
+                                                }
+                                            }
+                                        }
+                                        "Values"
+                                        {
+                                        }
+                                    }
+                                }
+                                "Values"
+                                {
+                                }
+                            }
                             "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_DE58C8E6A8034A95AA78CCFE6C0886A6"
                             {
                             "Name" = "8:Mozilla"
@@ -350,7 +526,7 @@
                                                     "Condition" = "8:ALLUSERS=NULL"
                                                     "Transitive" = "11:FALSE"
                                                     "ValueTypes" = "3:1"
-                                                    "Value" = "8:[TARGETDIR]manifest.json"
+                                                    "Value" = "8:[TARGETDIR]firefox\\manifest.json"
                                                     }
                                                 }
                                             }
@@ -408,7 +584,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_7EFA13D719E34D9CB99B58040D32D8FF"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:進行状況"
+                    "DisplayName" = "8:Progress"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdProgressDlg.wid"
@@ -464,7 +640,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_2515FBA014334CBAAB53204F8E01A159"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:ようこそ"
+                    "DisplayName" = "8:Welcome"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdWelcomeDlg.wid"
@@ -512,7 +688,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_C830F11F9DA14DD688AD225282F6E4B4"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:インストール フォルダー"
+                    "DisplayName" = "8:Installation Folder"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFolderDlg.wid"
@@ -547,7 +723,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_FC7A6F3BEF0743AFBFE7C9F950D2F01D"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:インストールの確認"
+                    "DisplayName" = "8:Confirm Installation"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdConfirmDlg.wid"
@@ -578,7 +754,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_BBA9FAE0E54C45F2888A0672002C5C6A"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:進行状況"
+                    "DisplayName" = "8:Progress"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminProgressDlg.wid"
@@ -622,7 +798,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_EC4A7DDFA61B4DFAACD39FFC1B7B04B2"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:完了"
+                    "DisplayName" = "8:Finished"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFinishedDlg.wid"
@@ -666,7 +842,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_D02AA1E594A443C69B1F2C28A7C8C810"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:完了"
+                    "DisplayName" = "8:Finished"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFinishedDlg.wid"
@@ -697,7 +873,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_73F1FA2CB0D945E1A6E369F71B94A36E"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:インストール フォルダー"
+                    "DisplayName" = "8:Installation Folder"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFolderDlg.wid"
@@ -719,7 +895,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_77A8EF2A5FAD452F96ED316D5E73464F"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:ようこそ"
+                    "DisplayName" = "8:Welcome"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminWelcomeDlg.wid"
@@ -767,7 +943,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_8ABEE27DA8B94CDBAFCDE719D8CB2FB3"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:インストールの確認"
+                    "DisplayName" = "8:Confirm Installation"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminConfirmDlg.wid"
