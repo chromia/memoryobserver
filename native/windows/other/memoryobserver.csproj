@@ -40,7 +40,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\src\memoryobserver.cs">
+    <Compile Include="..\..\src\memoryobserver.cs">
       <Link>memoryobserver.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
