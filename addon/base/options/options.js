@@ -1,3 +1,6 @@
+if( typeof browser === 'undefined'){ browser = undefined; }
+if( typeof chrome === 'undefined'){ chrome = undefined; }
+browser = browser || chrome;
 
 //target process name
 const targetid = "targetname";

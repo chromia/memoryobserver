@@ -1,10 +1,44 @@
+if( typeof browser === 'undefined'){ browser = undefined; }
+if( typeof chrome === 'undefined'){ chrome = undefined; }
+
+function getdefaulttarget()
+{
+    //Simple browser detection
+    //TODO: Find more clever way
+    let b = null;
+    let c = null;
+    if (browser && typeof browser.runtime !== 'undefined'){
+        b = browser.runtime;
+    }
+    if (chrome && typeof chrome.runtime !== 'undefined'){
+        c = chrome.runtime;
+    }
+    if( b && c ){
+        return "firefox"; //firefox.exe
+    }else if( c ){
+        return "chrome"; //chrome.exe
+    }else if( b ){
+        return "MicrosoftEdge|MicrosoftEdgeCP"; //edge executes
+    }else{
+        return "firefox"; //unknown...
+    }
+};
 
 //variables
 let memoryuse = '----';
 let enable = true;
 let targetname = null;
+const defaulttarget = getdefaulttarget();
 const firstinterval = 1000; // [ms]
 const interval = 5000; // [ms]
+
+//initialize webextensions API object
+//firefox has both 'browser' and 'chrome'
+//chrome has only 'chrome'
+//edge has 'browser' and INCOMPLETE 'chrome'
+//So best solution is below:
+browser = browser || chrome;
+//browser = chrome || browser; //this is bad on Edge
 
 
 //connect to native application
@@ -45,30 +79,15 @@ function callwrapper(func, key, callback)
 //wrapper of storage.local.get
 function getlocalstorage(key, callback) {  callwrapper(browser.storage.local.get, key, callback); }
 
-function getdefaulttarget()
-{
-    //Simple browser detection
-    //TODO: Find more clever way
-    const b = browser.runtime;
-    const c = chrome.runtime;
-    if( b && c ){
-        return "firefox"; //firefox.exe
-    }else if( c ){
-        return "chrome"; //chrome.exe
-    }else if( b ){
-        return "MicrosoftEdge|MicrosoftEdgeCP"; //edge executes
-    }else{
-        return "firefox"; //unknown...
-    }
-};
-
 function settarget()
 {
     //get target process name from storage
     getlocalstorage("targetname", (result) =>{
-        targetname = result.targetname || getdefaulttarget();
+        targetname = result.targetname || defaulttarget;
         //then, send it to native application
-        port.postMessage("settarget," + targetname);
+        if( enable ){
+            port.postMessage("settarget," + targetname);
+        }
     });
 }
 settarget(); //call it once on initializing phase
@@ -111,7 +130,7 @@ browser.runtime.onMessage.addListener(function(message, sender, sendResponse) {
         sendResponse("ok");
         settarget(); //update target process name
     }else if( message == "getdefaulttarget"){
-        sendResponse(getdefaulttarget());
+        sendResponse(defaulttarget);
     }
     return true
 });
