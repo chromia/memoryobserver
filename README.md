@@ -7,12 +7,14 @@ WebExtension for firefox to show memory consumption of your browser
 
 [download site](http://chromia.cocotte.jp/monooki/memoryobserver/)<br>
 This plugin needs installation of extra native application.<br>
-You must download "Addon file"(xpi) and "Native App" separately.
+You must download "Addon file" and "Native App" separately.
 
 ## Install
 ### for Windows
 1. run "memory_observer_native_win.msi" to install native app
-2. install "memory_observer-(version)-fx.xpi" to firefox
+2. install addon file.  
+For Firefox: "memory_observer-(version)-fx.xpi"  
+For Chrome: "memory_observer-(version)-ch.crx"
 
 ### for Linux
 1. download sourcefiles (download files from this repository)
@@ -30,16 +32,31 @@ You must download "Addon file"(xpi) and "Native App" separately.
     make  
     sudo make install
 
-    *if you want to install as personal, replace line 4-6 to this command:  
-    cmake -DSINGLEUSER=1 -DCMAKE_INSTALL_PREFIX=~/usr \.\.  
+    *If you want to install as personal, replace line 4-6 to this command:  
+    cmake -DSINGLEUSER=ON -DCMAKE_INSTALL_PREFIX=~/usr \.\.  
     make  
     make install
 
-4. install "memory_observer-(version)-fx.xpi" to firefox
+    *The default behavior, configuration files for Firefox/Chrome/Chromium are installed.
+    You can select preferred target browser by option flags( -DFIREFOX=[ON|OFF] or -DCHROME=[ON|OFF] or -DCHROMIUM=[ON|OFF], default is all ON )
 
-##Settings
+4. install addon file.  
+For Firefox: "memory_observer-(version)-fx.xpi"  
+For Chrome: "memory_observer-(version)-ch.crx"
 
-On default settings, this addon gets memory consumption of "firefox.exe".  
-So if you use Firefox alternative browser(e.g. Waterfox), specify browser name on addon setting page.
+## Settings
+
+On default settings, this addon gets memory consumption of "firefox.exe" or "chrome.exe" (browser detection is incomplete).  
+So if you use alternative browser(e.g. Waterfox), specify browser name on addon setting page.
 
 ![screenshot: settings](http://chromia.cocotte.jp/monooki/files/ss/mo_ss02.png)
+
+Name List of Browsers (without extension '.exe')
+|Browser|Name|
+|-|-|
+|Firefox|firefox|
+|Waterfox|waterfox|
+|Chrome|chrome|
+|Chromium|chrome (Windows)<br>chromium-browser (Linux)|
+|Opera|opera|
+|Vivaldi|vivaldi|
