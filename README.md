@@ -60,4 +60,4 @@ Name List of Browsers (without extension '.exe')
 |Chrome|chrome|
 |Chromium|chrome (Windows)<br>chromium-browser (Linux)|
 |Opera|opera|
-|Vivaldi|vivaldi|
+|Vivaldi|vivaldi (Windows)<br>vivaldi-bin (Linux)|
