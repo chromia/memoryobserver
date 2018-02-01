@@ -52,6 +52,7 @@ So if you use alternative browser(e.g. Waterfox), specify browser name on addon 
 ![screenshot: settings](http://chromia.cocotte.jp/monooki/files/ss/mo_ss02.png)
 
 Name List of Browsers (without extension '.exe')
+
 |Browser|Name|
 |-|-|
 |Firefox|firefox|
