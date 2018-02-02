@@ -83,6 +83,11 @@ if(CHROME OR CHROMIUM)
         COMMENT "Generating manifest: ${SRCMANIFESTNAME_CHROMXXX}")
 endif()
 
+#build target - packaging script
+add_custom_target(pkgscript
+    cp -f ${SRCDIR}/description-pak ${SRCDIR}/makepkg.sh ${WORKDIR}
+    COMMAND chmod +x ${WORKDIR}/makepkg.sh)
+
 #install target
 install(PROGRAMS ${EXEPATH} DESTINATION ${INSTALLDIR})
 if(FIREFOX)
